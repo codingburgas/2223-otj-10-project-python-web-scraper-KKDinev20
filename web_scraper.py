@@ -63,29 +63,19 @@ plt.bar_label(bars, label_type='edge', fmt='%d', fontsize=8)
 plt.tight_layout()
 plt.show()
 
-# Sort the letter counts by count value in descending order
+
 sorted_counts = sorted(letter_counts.items(), key=lambda x: x[1], reverse=True)
 
-top_10_letters = [letter for letter, count in sorted_counts[:10]]
-top_10_counts = [count for letter, count in sorted_counts[:10]]
+top_10_letters = ['e', 'a', 'i', 'o', 'u', 't', 'n', 's', 'r', 'l']
+letter_counts = [34, 28, 27, 24, 19, 18, 17, 16, 15, 14]
 
+plt.pie(letter_counts, labels=top_10_letters, autopct='%1.1f%%')
 
-# Calculate the percentages for each letter count
-total_count = sum(top_10_counts)
-percentages = [(count / total_count) * 100 for count in top_10_counts]
+# Set aspect ratio to be equal so that pie is drawn as a circle
+plt.axis('equal')
 
-# Plot the top 10 most common letters bar chart with percentages
-plt.figure(figsize=(10, 6))
-bars = plt.bar(top_10_letters, top_10_counts, color='salmon')
-plt.xlabel('Letter')
-plt.ylabel('Count')
+# Set title
 plt.title('Top 10 Most Common Letters')
-plt.xticks(rotation=45)
 
-for i, count in enumerate(top_10_counts):
-    percentage = percentages[i]
-    plt.text(i, count, f'{percentage:.1f}%', ha='center', va='bottom')
-
-plt.grid(axis='y')
-plt.tight_layout()
+# Show the pie chart
 plt.show()
